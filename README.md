@@ -2,7 +2,13 @@
 
 This repository is a publisher-first, multi-skill package for the `npx skills` ecosystem.
 
-It is intended to host multiple reusable skills in one Git repository so they can be installed from other projects with the Skills CLI.
+It is a curated personal skill collection: reusable agent skills extracted from real project work, then generalized so they can be installed and reused across other repositories.
+
+The goal is to keep each skill narrow, practical, and implementation-focused:
+
+- capture repeatable coding or integration patterns
+- avoid duplicating large third-party docs
+- link to official documentation when a topic is broader than the skill's scope
 
 ## Repository Layout
 
@@ -20,6 +26,37 @@ skills/<skill-name>/
 ```
 
 `SKILL.md` is the required installable entrypoint. Additional files should only be included when they directly support the skill's operation, such as bundled scripts, references, assets, or agent metadata.
+
+## Included Skills
+
+### `paraglide-js`
+
+A general Paraglide JS integration skill for i18n work.
+
+It focuses on the practical patterns needed to use Paraglide in real codebases:
+
+- Vite-based setup and generated output usage
+- locale strategy ordering and custom strategies
+- SSR integration with `paraglideMiddleware()`
+- TanStack Start integration
+- monorepo setup, especially the "each package compiles" pattern
+
+It is general-purpose, but it also captures a proven monorepo pattern based on real TanStack Start usage.
+
+### `effect-ts-app-patterns`
+
+A narrow Effect skill for application-layer TypeScript code.
+
+It does not try to document the full Effect library. Instead, it focuses on the app patterns that are repeatedly useful in day-to-day feature work:
+
+- `Effect.Effect<A, E, R>` as the basic program model
+- `Effect.gen` for multi-step workflows
+- `Effect.try` / `Effect.tryPromise` for unsafe boundaries
+- `Data.TaggedError` for expected failures
+- in-pipeline logging and explicit recovery
+- executing programs only at framework boundaries
+
+For advanced topics outside that scope, the skill points directly to the official Effect documentation.
 
 ## Installing From This Repo
 
